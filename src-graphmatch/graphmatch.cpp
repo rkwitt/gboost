@@ -53,6 +53,7 @@
 #include <vf2_mono_state.h>
 #include <match.h>
 #include <vector>
+#include <inttypes.h>
 
 /* Matlab MEX interface include files
  */

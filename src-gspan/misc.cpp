@@ -162,10 +162,14 @@ Edge *get_backward (Graph &graph, Edge* e1, Edge* e2, History& history)
 			continue;
 
 		if ( (it->to == e1->from) &&
-			( (e1->elabel < it->elabel) ||
-				(e1->elabel == it->elabel) &&
-					(graph[e1->to].label <= graph[e2->to].label)
-			) )
+            (
+              (e1->elabel < it->elabel) ||
+                (
+                  (e1->elabel == it->elabel) &&
+                  (graph[e1->to].label <= graph[e2->to].label)
+                )
+            )
+       )
 		{
 			return &(*it);
 		}

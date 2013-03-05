@@ -17,7 +17,7 @@ INCLUDE=-I${MATLABROOT}/extern/include
 #CPPFLAGS = -DDEBUG -g -ggdb -Wall -Wno-deprecated ${INCLUDE}
 #CPPFLAGS = -g -ggdb -Wall -Wno-deprecated ${INCLUDE}
 CPPFLAGS = -DNDEBUG -O3 -fomit-frame-pointer -funroll-loops -fPIC \
-	-mtune=pentium4 -Wall -Wno-deprecated ${INCLUDE}
+	-Wall -Wno-deprecated ${INCLUDE}
 
 MEX=${MATLABROOT}/bin/mex
 MEXFLAGS=-O

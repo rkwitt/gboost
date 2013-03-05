@@ -59,7 +59,7 @@ depend:
 	makedepend -Iinclude -Y src/*
 
 clean:
-	-rm src/*.o
+	-rm -f src/*.o
 
 # DO NOT DELETE
 

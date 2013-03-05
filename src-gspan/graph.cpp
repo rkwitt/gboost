@@ -49,9 +49,9 @@ void Graph::buildEdge ()
 				it != (*this)[from].edge.end (); ++it)
 		{
 			if (directed || from <= it->to)
-				std::sprintf (buf, "%d %d %d", from, it->to, it->elabel);
+				sprintf (buf, "%d %d %d", from, it->to, it->elabel);
 			else
-				std::sprintf (buf, "%d %d %d", it->to, from, it->elabel);
+				sprintf (buf, "%d %d %d", it->to, from, it->elabel);
 
 			// Assign unique id's for the edges.
 			if (tmp.find (buf) == tmp.end()) {
@@ -286,9 +286,9 @@ std::ostream &Graph::write (std::ostream &os)
 		for (Vertex::edge_iterator it = (*this)[from].edge.begin ();
 				it != (*this)[from].edge.end (); ++it) {
 			if (directed || from <= it->to) {
-				std::sprintf (buf, "%d %d %d", from, it->to,   it->elabel);
+				sprintf (buf, "%d %d %d", from, it->to,   it->elabel);
 			} else {
-				std::sprintf (buf, "%d %d %d", it->to,   from, it->elabel);
+				sprintf (buf, "%d %d %d", it->to,   from, it->elabel);
 			}
 			tmp.insert (buf);
 		}
