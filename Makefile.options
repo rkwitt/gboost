@@ -1,0 +1,5 @@
+
+# 1. Set the Matlab installation directory here
+#
+MATLABROOT=/Applications/MATLAB_R2012a.app/
+
