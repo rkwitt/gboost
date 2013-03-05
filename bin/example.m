@@ -1,4 +1,3 @@
-
 % Example training and testing a 2-class graph boosting classifier
 
 disp(['Loading example graphs...']);

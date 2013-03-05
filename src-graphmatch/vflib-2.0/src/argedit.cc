@@ -120,7 +120,10 @@ void* ARGEdit::GetNodeAttr(node_id id)
     while (n!=NULL && n->id!=id)
       n=n->next;
     if (n==NULL)
-      error("Inconsistent data");
+    { 
+      const char *msg = "Inconsistent data";
+      error(msg);
+    }
     return n->attr;
   }
 

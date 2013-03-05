@@ -23,7 +23,7 @@
 #include <cstring>
 #include <string>
 #include <iterator>
-#include <strstream>
+#include <sstream>
 #include <set>
 
 #include <assert.h>
@@ -34,7 +34,7 @@ namespace GSPAN {
 template <class T, class Iterator>
 void tokenize (const char *str, Iterator iterator)
 {
-	std::istrstream is (str, std::strlen(str));
+	std::istringstream is (str);
 	std::copy (std::istream_iterator <T> (is), std::istream_iterator <T> (), iterator);
 }
 

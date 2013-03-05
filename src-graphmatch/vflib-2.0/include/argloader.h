@@ -65,19 +65,11 @@
 #define ARGLOADER_H
 
 #include <iostream>
-#include <strstream>
+#include <sstream>
 #include <ctype.h>
 
 
-//
-// if the following line cause errors, your compiler
-// does not recognize C++ namespaces. Just comment it out.
-// You will probably also have to replace <iostream> with <iostream.h>
-// and <strstream> with <strstream.h> (or maybe <strstrea.h>) in the
-// above #include directives.
-//
 using namespace std;
-
 
 
 #include "argedit.h"
@@ -179,7 +171,7 @@ readCount(istream &in)
     readLine(in, line);
     
     int i;
-    istrstream is(line);
+    istringstream is(line);
     is>>i;
 
     return i;
@@ -193,7 +185,7 @@ void StreamARGLoader<Node, Edge>::
 readNode(Allocator<Node> *alloc, istream &in)
   { char line[MAX_LINE+1];
     readLine(in, line);
-    istrstream is(line);
+    istringstream is(line);
     
     Node *nattr=alloc->Allocate();
     node_id id;
@@ -214,7 +206,7 @@ void StreamARGLoader<Node, Edge>::
 readEdge(Allocator<Edge> *alloc, istream &in)
   { char line[MAX_LINE+1];
     readLine(in, line);
-    istrstream is(line);
+    istringstream is(line);
     
     Edge *eattr=alloc->Allocate();
     node_id id1, id2;

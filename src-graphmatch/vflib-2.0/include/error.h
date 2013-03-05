@@ -22,7 +22,7 @@
 
 #include <stddef.h>
 
-void error(char *msg, ...);
+void error(const char *msg, ...);
 
 
 

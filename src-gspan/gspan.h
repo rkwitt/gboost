@@ -202,7 +202,7 @@ private:
 	bool mex;	// Shall we output to matlab structures?
 	class mexOutputG {
 	public:
-		struct mexOutputG* next;
+		class mexOutputG* next;
 		mxArray* graph;
 		double par;
 		std::map<unsigned int, unsigned int> counts;

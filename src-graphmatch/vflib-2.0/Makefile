@@ -9,7 +9,7 @@
 # 
 # Optimization flags
 #
-OPTFLAGS=-O3 -mcpu=pentium4 -funroll-loops -fomit-frame-pointer -fPIC
+OPTFLAGS=-O3 -funroll-loops -fomit-frame-pointer -fPIC
 # OPTFLAGS=
 
 #
