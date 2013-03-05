@@ -1,15 +1,27 @@
-
 gboost - Matlab graph boosting package
 ======================================
 
-Version 0.1.1, 11th July 2007
+Version 0.1.1, 11th July 2007 (+ minor adjustments)
 
 
-About
-=====
+Contents
+--------
+
+* [Description](#description)
+* [Authors](#authors)
+* [Licence](#lic)
+* [Installation](#install)
+* [Documentation](#doc)
+* [Demonstration](#demo)
+* [References](#ref)
+
+
+Description
+-----------
+<a name="description"/>
 
 This package contains a Matlab interface to various libraries in order to
-perform graph boosting [Kudo2004] and frequent subgraph mining [Yan2002].
+perform graph boosting [\[Kudo2004\]](#ref) and frequent subgraph mining [\[Yan2002\]](#ref).
 Graph boosting learns a classification function on discrete-labeled undirected
 connected graphs.  Frequent subgraph mining determines subgraphs with a given
 minimum support.
@@ -19,26 +31,25 @@ problems where samples can be represented by individual parts (vertices) and
 their relationships (edges).  Graph boosting has been particularly successful
 for the classification of chemical molecules.
 
-While graph boosting can also be used for regression this package does not
+While graph boosting can also be used for regression this package does *not*
 implement a regressor.
 
 
 Authors
-=======
+-------
+<a name="authors"/>
 
-Sebastian Nowozin <sebastian.nowozin@tuebingen.mpg.de>
-   -- Matlab wrappers, LPBoost, modifications to gSpan implementation
-
-Taku Kudo <taku@google.com>
-   -- C++ gSpan implementation
-
-Intelligent Systems and Artificial Vision Lab, SIVALab of the University of
-Naples ''Federico II''.
-   -- VFLib graph matching library
+* Sebastian Nowozin <sebastian.nowozin@tuebingen.mpg.de>
+  * Matlab wrappers, LPBoost, modifications to gSpan implementation
+* Taku Kudo <taku@google.com>
+ * C++ gSpan implementation
+* Intelligent Systems and Artificial Vision Lab, SIVALab of the University of Naples ''Federico II''.
+ * VFLib graph matching library
 
 
 License
-=======
+-------
+<a name="lic"/>
 
 The software is dual licensed under the GNU General Public License version 2
 and the Mozilla Public License, version 1.1.  This means that you can choose
@@ -47,12 +58,12 @@ any of the two licenses.
 The licenses are included as LICENSE.txt (GPL version 2) and MPL-1.1.txt
 (Mozilla Public License, version 1.1).
 
-
-i) GNU General Public License
+```bash
+GNU General Public License
 
 Copyright (C) 2006 Sebastian Nowozin,
 Copyright (C) 2004 Taku Kudo,
-Copyright (C) 2001 Dipartimento di Informatica e Sistemistica, Università
+Copyright (C) 2001 Dipartimento di Informatica e Sistemistica, Universit
     degli studi di Napoli ``Federico II'',
 All rights reserved.
 
@@ -70,9 +81,10 @@ details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place - Suite 330, Boston, MA 02111-1307, USA
+```
 
-
-ii) Mozilla Public License
+```
+Mozilla Public License
 
 ``The contents of this distribution are subject to the Mozilla Public License
 Version 1.1 (the "License"); you may not use this file except in compliance
@@ -88,7 +100,7 @@ the specific language governing rights and limitations under the License.
      The Initial Developer of the Original Code is Sebastian Nowozin.
      Portions created by Taku Kudo are Copyright (C) 2007.
      Portions created by Dipartimento di Informatica e Sistemistica,
-        Università degli studi di Napoli ``Federico II'' are
+        Universit degli studi di Napoli ``Federico II'' are
         Copyright (C) 2001.
      All Rights Reserved.
 
@@ -102,22 +114,21 @@ the provisions above and replace  them with the notice and other provisions
 required by the GNU General Public License.  If you do not delete the
 provisions above, a recipient may use your version of this file under either
 the MPL or the GNU General Public License, version 2.''
-
+```
 
 Installation
 ============
+<a name="install"/>
 
 Prequisites
      - Linux, x86, either 32 bit or 64 bit
-     - Matlab R14
+     - Matlab R14 (also tested with 2012b)
      - CVX Matlab Optimization Kit, available under the GNU General Public
        License at http://www.stanford.edu/~boyd/cvx/
 
 The program has been tested on Debian GNU/Linux, x86 32 bit and 64 bit
-architectures with Matlab R14SP2, SP3 and R2006a.
-
-There are precompiled binaries for x86 in the bin/ folder and no compilation
-is required.
+architectures with Matlab R14SP2, SP3, R2006a, and most recently on 
+Ubuntu 12.04 (64bit) running R2012a.
 
 If you want to modify the source code, you have to modify Makefile.options in
 the root directory to setup your Matlab path.  Afterwards, a simple "make" in
@@ -126,50 +137,59 @@ gSpan graph mining.
 
 
 Documentation
-=============
+-------------
+<a name="doc"/>
 
 The source code is well documented, but here is a list of the most important
 parts.
 
-gspan.m is the Matlab side interface of Taku's gSpan code.  It can perform
+`gspan.m` is the Matlab side interface of Taku's gSpan code.  It can perform
 both frequent subgraph mining as well as weighted subgraph mining.  The first
 is useful for data mining purposes, while the second is used in graph
 boosting.
 
-findhypothesis_graph.m is the interface between LPBoost and the weighted graph
-mining algorithm (gSpan).  The duty of findhypothesis_graph is to create
+`findhypothesis_graph.m` is the interface between LPBoost and the weighted graph
+mining algorithm (gSpan).  The duty of `findhypothesis_graph` is to create
 decision stumps which correspond to the most violated constraint in the LP
-dual (column-generation).  In fact, you can use the included lpboost1d5.m with
-any other decision stump, you only need to write a suitable findhypothesis_*.m
+dual (column-generation).  In fact, you can use the included `lpboost1d5.m` with
+any other decision stump, you only need to write a suitable `findhypothesis_*.m`
 function.
 
-lpboost.m is an implementation of 1-class, 2-class and "1.5-class"
+`lpboost.m` is an implementation of 1-class, 2-class and "1.5-class"
 nu-LPBoosting.  The 1-class and 2-class formulations are explained in
-[Demiriz2002], the 1.5-class formulation learns a 1-class classifier but also
+[\[Demiriz2002\]](#ref), the 1.5-class formulation learns a 1-class classifier but also
 takes into account negative samples.
 
-graphmatch.mex* is a wrapper around VFLib to perform subgraph-graph
+`graphmatch.mex*` is a wrapper around VFLib to perform subgraph-graph
 isomorphism matching.  It can output all matches and is used for the testing
 on unlabeled samples.  It can match both directed and undirected graphs.
 
-mexgspan.mex* is the gSpan Matlab wrapper.
+`mexgspan.mex*` is the gSpan Matlab wrapper.
 
-rocscore.m is a simple function calculating the ROC AUC and ROC EER score as
+`rocscore.m` is a simple function calculating the ROC AUC and ROC EER score as
 well as the ROC curve itself.
 
-
 Demonstration
-=============
+-------------
+<a name="demo"/>
 
 Start Matlab and go to the bin/ directory.  Running the example.m script will
 guide you through the training of a graph boosting classifier for a small
-molecule example set.
+molecule example set. Assuming that your CVX install is at `/Software/cvx/`,
+and you checked out gboost at `/Software/gboost`, run
+
+```matlab
+cd '/Software/cxv'
+cvx_setup
+cd '/Software/gboost'
+example
+```
 
 If you have any questions, please feel free to email the first author.
 
-
 References
-==========
+----------
+<a name="ref"/>
 
 [Demiriz2002], Ayhan Demiriz, Kristin P. Bennett and John Shawe-Taylor,
    "Linear Programming Boosting via Column Generation", 2002, Journal of
