@@ -3,6 +3,8 @@ gboost - Matlab graph boosting package
 
 Version 0.1.1, 11th July 2007 (+ minor adjustments)
 
+**Original website:** http://www.nowozin.net/sebastian/gboost/
+
 
 Contents
 --------
